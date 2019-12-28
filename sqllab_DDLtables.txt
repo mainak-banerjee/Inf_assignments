@@ -1,0 +1,98 @@
+SQL> select last_name,department_id,job_id
+  2  from employees
+  3  where department_id in (select department_id from departments where location_id=1700);
+
+LAST_NAME                 DEPARTMENT_ID JOB_ID                                  
+------------------------- ------------- ----------                              
+King                                 90 AD_PRES                                 
+Kochhar                              90 AD_VP                                   
+De Haan                              90 AD_VP                                   
+Greenberg                           100 FI_MGR                                  
+Faviet                              100 FI_ACCOUNT                              
+Chen                                100 FI_ACCOUNT                              
+Sciarra                             100 FI_ACCOUNT                              
+Urman                               100 FI_ACCOUNT                              
+Popp                                100 FI_ACCOUNT                              
+Raphaely                             30 PU_MAN                                  
+Khoo                                 30 PU_CLERK                                
+
+LAST_NAME                 DEPARTMENT_ID JOB_ID                                  
+------------------------- ------------- ----------                              
+Baida                                30 PU_CLERK                                
+Tobias                               30 PU_CLERK                                
+Himuro                               30 PU_CLERK                                
+Colmenares                           30 PU_CLERK                                
+Whalen                               10 AD_ASST                                 
+Higgins                             110 AC_MGR                                  
+Gietz                               110 AC_ACCOUNT                              
+
+18 rows selected.
+
+SQL> create dept dept
+  2   (id number(7),
+  3    name varchar2(25));
+create dept dept
+       *
+ERROR at line 1:
+ORA-00901: invalid CREATE command 
+
+
+SQL> create table dept
+  2   (id number(7),
+  3    name varchar2(25));
+
+Table created.
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(7)
+ NAME                                               VARCHAR2(25)
+
+SQL> insert into dept
+  2  select department_id,department_name
+  3  from departments;
+
+27 rows created.
+
+SQL> select * from dept;
+
+        ID NAME                                                                 
+---------- -------------------------                                            
+        10 Administration                                                       
+        20 Marketing                                                            
+        30 Purchasing                                                           
+        40 Human Resources                                                      
+        50 Shipping                                                             
+        60 IT                                                                   
+        70 Public Relations                                                     
+        80 Sales                                                                
+        90 Executive                                                            
+       100 Finance                                                              
+       110 Accounting                                                           
+
+        ID NAME                                                                 
+---------- -------------------------                                            
+       120 Treasury                                                             
+       130 Corporate Tax                                                        
+       140 Control And Credit                                                   
+       150 Shareholder Services                                                 
+       160 Benefits                                                             
+       170 Manufacturing                                                        
+       180 Construction                                                         
+       190 Contracting                                                          
+       200 Operations                                                           
+       210 IT Support                                                           
+       220 NOC                                                                  
+
+        ID NAME                                                                 
+---------- -------------------------                                            
+       230 IT Helpdesk                                                          
+       240 Government Sales                                                     
+       250 Retail Sales                                                         
+       260 Recruiting                                                           
+       270 Payroll                                                              
+
+27 rows selected.
+
+SQL> spool off
