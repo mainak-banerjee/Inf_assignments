@@ -1,0 +1,42 @@
+SQL> set serveroutput on
+SQL> DECLARE
+  2  
+  3  n NUMBER := 1634;
+  4  r NUMBER;
+  5  BEGIN
+  6  
+  7  r := MOD(n, 2);
+  8  
+  9  IF r = 0 THEN
+ 10  dbms_output.Put_line('Even');
+ 11  ELSE
+ 12  dbms_output.Put_line('Odd');
+ 13  END IF;
+ 14  END;
+ 15  /
+Even                                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off
+SQL> set serveroutput on
+SQL> DECLARE
+  2  
+  3  n NUMBER := 1635;
+  4  r NUMBER;
+  5  BEGIN
+  6  
+  7  r := MOD(n, 2);
+  8  
+  9  IF r = 0 THEN
+ 10  dbms_output.Put_line('Even');
+ 11  ELSE
+ 12  dbms_output.Put_line('Odd');
+ 13  END IF;
+ 14  END;
+ 15  /
+Odd                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off
